@@ -242,6 +242,19 @@ public class SwerveSubsystem extends SubsystemBase
       drive(getTargetSpeeds(0, 0, Rotation2d.fromDegrees(degrees)));
     });
   }
+  public Command align2reef(double tolerance, double degrees)
+  {
+    SwerveController controller = swerveDrive.getSwerveController();
+    return run(
+        () -> {
+          ChassisSpeeds speeds = ChassisSpeeds.fromFieldRelativeSpeeds(0, 0,
+                                                   controller.headingCalculate(getHeading().getRadians(),
+                                                                               degrees),
+                                                                       getHeading());
+          drive(speeds);
+        }).until(() -> Math.abs(degrees) < tolerance);
+  }
+
 
   /**
    * Get the path follower with events.

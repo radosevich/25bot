@@ -139,7 +139,7 @@ public class RobotContainer
     if (DriverStation.isTest())
     {
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity); // Overrides drive command above!
-
+      driverXbox.a().onTrue(drivebase.aligntoReef(-45));
       driverXbox.b().whileTrue(drivebase.sysIdDriveMotorCommand());
       driverXbox.x().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
       driverXbox.y().whileTrue(drivebase.driveToDistanceCommand(1, 0.2));
