@@ -24,19 +24,15 @@ public final class Constants
   public static final double LOOP_TIME  = 0.13; //s, 20ms + 110ms sprk max velocity lag
   public static final double MAX_SPEED  = Units.feetToMeters(20);
   // Maximum speed of the robot in meters per second, used to limit acceleration.
+
+  // arm constants
   public static final int kArmMotorPort = 54;
   public static final int kEncoderAChannel = 55;
   public static final int kEncoderBChannel = 57;
   public static final double kRaisedPosition = Units.degreesToRadians(90.0);
   public static final double kLoweredPosition = Units.degreesToRadians(0.0);
-  
-  // Moment of inertia of the arm, in kg * m^2. Can be estimated with CAD. If finding this constant
-  // is difficult, LinearSystem.identifyPositionSystem may be better.
-  public static final double kArmMOI = 1.2;
-
-  // Reduction between motors and encoder, as output over input. If the arm spins slower than
-  // the motors, this number should be greater than one.
-public static final double kArmGearing = 10.0;
+  public static final double kL1Degrees = 35;
+  public static final double kArmSpeed = 0.2;
 
 
 //  public static final class AutonConstants
