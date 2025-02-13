@@ -145,7 +145,7 @@ public class RobotContainer
     {
       drivebase.setDefaultCommand(driveFieldOrientedAnglularVelocity); // Overrides drive command above!
       driverXbox.a().onTrue(drivebase.aligntoReef(-45));
-      driverXbox.b().whileTrue(drivebase.sysIdDriveMotorCommand());
+      //driverXbox.b().whileTrue(drivebase.sysIdDriveMotorCommand());
       driverXbox.x().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());
       driverXbox.y().whileTrue(drivebase.driveToDistanceCommand(1, 0.2));
       driverXbox.start().onTrue((Commands.runOnce(drivebase::zeroGyro)));
@@ -156,12 +156,12 @@ public class RobotContainer
     {
       // commands for driver during teleop
       driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
-      driverXbox.x().onTrue(drivebase.aligntoReef(-45));
+      driverXbox.x().whileTrue(drivebase.aligntoReef(-60));
       /* driverXbox.b().whileTrue(
           drivebase.driveToPose(
               new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
                               ); */
-      driverXbox.y().onTrue(drivebase.aligntoReef(45));
+      driverXbox.y().whileTrue(drivebase.aligntoReef(Constants.kReef));
       driverXbox.start().whileTrue(Commands.none());
       driverXbox.back().whileTrue(Commands.none());
       driverXbox.leftBumper().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());

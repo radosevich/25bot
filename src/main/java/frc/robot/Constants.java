@@ -33,7 +33,7 @@ public final class Constants
   public static final double kLoweredPosition = Units.degreesToRadians(0.0);
   public static final double kL1Degrees = 35;
   public static final double kArmSpeed = 0.2;
-
+  public static final double kReef = 60;
 
 //  public static final class AutonConstants
 //  {
