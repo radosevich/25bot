@@ -156,12 +156,12 @@ public class RobotContainer
     {
       // commands for driver during teleop
       driverXbox.a().onTrue((Commands.runOnce(drivebase::zeroGyro)));
-      driverXbox.x().onTrue(drivebase.aligntoReef(-45));
+      driverXbox.x().whileTrue(drivebase.aligntoReef(-45));
       /* driverXbox.b().whileTrue(
           drivebase.driveToPose(
               new Pose2d(new Translation2d(4, 4), Rotation2d.fromDegrees(0)))
                               ); */
-      driverXbox.y().onTrue(drivebase.aligntoReef(45));
+      driverXbox.y().whileTrue(drivebase.aligntoReef(45));
       driverXbox.start().whileTrue(Commands.none());
       driverXbox.back().whileTrue(Commands.none());
       driverXbox.leftBumper().whileTrue(Commands.runOnce(drivebase::lock, drivebase).repeatedly());

@@ -238,9 +238,10 @@ public class SwerveSubsystem extends SubsystemBase
 
   public Command aligntoReef(double degrees)
   {
-    return run(() -> {
+    return runOnce(() -> {
       drive(getTargetSpeeds(0, 0, Rotation2d.fromDegrees(degrees)));
     });
+
   }
   public Command align2reef(double tolerance, double degrees)
   {
